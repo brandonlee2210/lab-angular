@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
   // call api
-  apiUrl = 'https://fakestoreapi.com/products';
-  apiAdminUrl = 'http://localhost:3000/products'; // khai bao apiUrl
+  apiUrl = 'https://65a66d9474cf4207b4f00059.mockapi.io/products';
+  apiAdminUrl = 'https://65a66d9474cf4207b4f00059.mockapi.io/products'; // khai bao apiUrl
 
   http = inject(HttpClient); // inject bien http
   constructor() {}
