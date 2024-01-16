@@ -22,11 +22,8 @@ export class ProductService {
     return this.http.post<ProductAdmin>(this.apiAdminUrl, product);
   }
 
-  editProduct(product: ProductAdmin): Observable<ProductAdmin> {
-    return this.http.put<ProductAdmin>(
-      `${this.apiAdminUrl}/${product.id}`,
-      product
-    );
+  editProduct(product: ProductAdmin, id: any): Observable<ProductAdmin> {
+    return this.http.put<ProductAdmin>(`${this.apiAdminUrl}/${id}`, product);
   }
 
   deleteProduct(id: number): Observable<ProductAdmin> {

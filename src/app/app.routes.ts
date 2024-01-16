@@ -4,6 +4,7 @@ import { ProductsComponent } from './pages/admin/products/products.component';
 import { EditProductsComponent } from './pages/admin/edit-products/edit-products.component';
 import { AddProductComponent } from './pages/admin/add-product/add-product.component';
 import { AdminComponent } from './layouts/admin/admin.component';
+
 export const routes: Routes = [
   // route '/' = page Home
   // path, component
@@ -14,6 +15,7 @@ export const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: 'products', component: ProductsComponent },
+      { path: '', component: ProductsComponent },
       {
         path: 'products/edit/:id',
         component: EditProductsComponent,

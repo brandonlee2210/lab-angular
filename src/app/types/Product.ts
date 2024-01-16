@@ -19,6 +19,7 @@ export type ProductAdmin = {
   title: string | null;
   description: string | null;
   price: number | null;
+  img: string | null;
 };
 
 // export type CreateProductAdmin = Omit<ProductAdmin, 'id'>;

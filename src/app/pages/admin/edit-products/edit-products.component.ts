@@ -57,7 +57,7 @@ export class EditProductsComponent implements OnInit {
   // show all input
   editProduct() {
     this.productService
-      .editProduct(this.editProductForm.value as ProductAdmin)
+      .editProduct(this.editProductForm.value as ProductAdmin, this.productId)
       .subscribe((product) => {
         console.log(product);
         alert('Edit product successfully!');
