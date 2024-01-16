@@ -9,13 +9,32 @@ import { Observable } from 'rxjs';
 export class ProductService {
   // call api
   apiUrl = 'https://fakestoreapi.com/products';
-  apiAdminUrl = 'https://hoadv-nodejs.vercel.app/api/products'; // khai bao apiUrl
+  apiAdminUrl = 'http://localhost:3000/products'; // khai bao apiUrl
 
   http = inject(HttpClient); // inject bien http
   constructor() {}
 
   getProductList(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl); //axios.get(apiUrl)
+  }
+
+  addProduct(product: ProductAdmin): Observable<ProductAdmin> {
+    return this.http.post<ProductAdmin>(this.apiAdminUrl, product);
+  }
+
+  editProduct(product: ProductAdmin): Observable<ProductAdmin> {
+    return this.http.put<ProductAdmin>(
+      `${this.apiAdminUrl}/${product.id}`,
+      product
+    );
+  }
+
+  deleteProduct(id: number): Observable<ProductAdmin> {
+    return this.http.delete<ProductAdmin>(`${this.apiAdminUrl}/${id}`);
+  }
+
+  getProduct(id: number): Observable<ProductAdmin> {
+    return this.http.get<ProductAdmin>(`${this.apiAdminUrl}/${id}`);
   }
 
   getProductListAdmin(): Observable<ProductAdmin[]> {

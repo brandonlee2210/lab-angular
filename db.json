@@ -1,0 +1,39 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "title": "PC"
+    },
+    {
+      "id": 2,
+      "title": "Laptop"
+    },
+    {
+      "id": 3,
+      "title": "Phone"
+    }
+  ],
+  "products": [
+    {
+      "id": 6499,
+      "title": "2131ed2",
+      "price": 12,
+      "description": "just a test product",
+      "category": "PC"
+    },
+    {
+      "id": 3597,
+      "title": "sads",
+      "price": 1,
+      "description": "qwe",
+      "category": "Laptop"
+    },
+    {
+      "id": 7330,
+      "title": "san pham 2",
+      "price": 3,
+      "description": "tesst descriptiojn",
+      "category": "Phone"
+    }
+  ]
+}

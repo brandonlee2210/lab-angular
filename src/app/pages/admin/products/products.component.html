@@ -1,4 +1,18 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <app-add-product
+    *ngIf="isCreate"
+    (handleCloseForm)="toggleModal()"
+    (handleAddProduct)="getProducts()"
+    [categories]="categories"
+  ></app-add-product>
+  <app-edit-products
+    *ngIf="isEdit"
+    (handleCloseEditForm)="toggleModalEdit()"
+    (handleEditProduct)="getProducts()"
+    [productId]="edittingProductId"
+    [categories]="categories"
+  ></app-edit-products>
+
   <table
     class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
   >
@@ -25,16 +39,33 @@
           {{ product.title }}
         </th>
         <td class="px-6 py-4">{{ product.description }}</td>
-        <td class="px-6 py-4">Laptop</td>
-        <td class="px-6 py-4">$2999</td>
+        <td class="px-6 py-4">{{ product.category }}</td>
+        <td class="px-6 py-4">${{ product.price }}</td>
         <td class="px-6 py-4">
-          <a
-            href="#"
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-            >Edit</a
+          <button
+            class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-2"
+            (click)="showEditProductForm(product.id)"
           >
+            Edit
+          </button>
+          <button
+            href="#"
+            class="font-medium text-red-600 dark:text-red-500 hover:underline"
+            (click)="deleteProduct(product.id)"
+          >
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+<!-- Modal toggle -->
+<button
+  class="mt-4 block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+  type="button"
+  (click)="toggleModal()"
+>
+  Add Product
+</button>
