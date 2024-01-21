@@ -4,7 +4,7 @@ export type Product = {
   id: number; // Omit loai bo
   title: string;
   price: number;
-  image: string;
+  img: string;
   description: string;
   category: string; // Omit loai bo
   rating: {

@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgIf } from '@angular/common';
+import { Validators } from '@angular/forms';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
 import { ProductAdmin } from '../../../types/Product';
@@ -40,6 +41,8 @@ export class EditProductsComponent implements OnInit {
     title: new FormControl(''),
 
     price: new FormControl(0),
+
+    img: new FormControl('', [Validators.required]),
 
     description: new FormControl(''),
 
