@@ -10,12 +10,15 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { canActivateTeam } from './auth-guard.guard';
 import { AddUsersComponent } from './pages/admin/users/add-users/add-users.component';
+import { AllUsersComponent } from './pages/admin/users/all-users/all-users.component';
 
 const canActivate = () => {
   const token = sessionStorage.getItem('user');
   if (token) {
     return true;
   }
+
+  window.location.href = '/login';
   return false;
 };
 
@@ -46,8 +49,7 @@ export const routes: Routes = [
         data: { isEdit: true },
       },
       { path: 'categories/add', component: AddCategoryComponent },
-      { path: 'users/add', component: AddUsersComponent },
-      { path: 'users', component: CategoriesComponent },
+      { path: 'users', component: AllUsersComponent },
     ], // data: {isEdit: true} => truyen tham so
   },
 ];

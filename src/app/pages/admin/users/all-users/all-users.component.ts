@@ -1,42 +1,34 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { ProductAdmin } from '../../../../types/Product';
-import { ProductService } from '../../../../services/product.service'; // import services
-import { CategoryService } from '../../../../services/category.service';
+import { UserService } from '../../../../services/user.service';
 import { AddUsersComponent } from '../add-users/add-users.component';
+import { EditUsersComponent } from '../edit-users/edit-users.component';
 import { PaginationComponent } from '../../../../components/admin/pagination/pagination.component';
 // import { EditProductsComponent } from '../edit-products/edit-products.component';
 
 @Component({
   selector: 'app-all-users',
   standalone: true,
-  imports: [NgFor, NgIf, AddUsersComponent, PaginationComponent],
+  imports: [
+    NgFor,
+    EditUsersComponent,
+    NgIf,
+    AddUsersComponent,
+    PaginationComponent,
+  ],
   templateUrl: './all-users.component.html',
   styleUrl: './all-users.component.css',
 })
 export class AllUsersComponent implements OnInit {
-  productService = inject(ProductService); // inject vao bien
-  categoryService = inject(CategoryService); // inject vao bien
+  userService = inject(UserService); // inject vao bien
 
-  productList: ProductAdmin[] = [];
-
-  edittingCategoryId: number = 0;
-  categories: any[] = [];
-  totalCategories: any[] = [];
+  edittingUserId: number = 0;
 
   isCreate: boolean = false;
   isEdit: boolean = false;
 
-  offset: number = 0;
-  limit: number = 10;
-  currentPage: number = 1;
-
-  totalPage: number = 4;
-
-  nextPage() {
-    this.offset += this.limit;
-    this.currentPage++;
-  }
+  users: any[] = [];
 
   toggleModal() {
     this.isCreate = !this.isCreate;
@@ -46,21 +38,43 @@ export class AllUsersComponent implements OnInit {
     this.isEdit = !this.isEdit;
   }
 
-  deleteCategory(id: number) {
+  deleteUser(id: number) {
     let isConfirmed = confirm('Are you sure to delete this product?');
     if (isConfirmed) {
-      this.categoryService.deleteCategory(id).subscribe((category) => {
+      this.userService.deleteUser(id).subscribe((category) => {
         alert('Delete category successfully!');
-        this.totalPage = Math.ceil(this.categories.length / this.limit);
-        this.currentPage = 1;
+
+        this.userService.getUserListAdmin().subscribe((users) => {
+          this.users = users;
+        });
       });
     }
   }
 
-  showEditCategoryForm(id: number) {
-    this.isEdit = !this.isEdit;
-    this.edittingCategoryId = id;
+  handleAddUser() {
+    this.userService.getUserListAdmin().subscribe((users) => {
+      this.users = users;
+    });
+
+    this.toggleModal();
   }
 
-  ngOnInit(): void {}
+  handleEditUser() {
+    this.userService.getUserListAdmin().subscribe((users) => {
+      this.users = users;
+    });
+
+    this.toggleModalEdit();
+  }
+
+  showEditCategoryForm(id: number) {
+    this.isEdit = !this.isEdit;
+    this.edittingUserId = id;
+  }
+
+  ngOnInit(): void {
+    this.userService.getUserListAdmin().subscribe((users) => {
+      this.users = users;
+    });
+  }
 }

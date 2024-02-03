@@ -35,6 +35,7 @@ export class SignupComponent {
       } else {
         this.authService.signup(this.user).subscribe();
         alert('Signup success');
+        window.location.href = '/login';
       }
     });
   }

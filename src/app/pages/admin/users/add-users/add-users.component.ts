@@ -15,7 +15,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { CategoryService } from '../../../../services/category.service';
-import { CategoryAdmin } from '../../../../types/Category';
+import { UserService } from '../../../../services/user.service';
+import { UserAdmin } from '../../../../types/User';
 
 @Component({
   selector: 'app-add-users',
@@ -29,7 +30,7 @@ export class AddUsersComponent implements OnInit {
   @Output() handleAddCategory = new EventEmitter<any>();
   @Input() categories: any[] = [];
   // productService = inject(ProductService); //
-  categoryService = inject(CategoryService); //
+  categoryService = inject(UserService); //
 
   // auto generate id
   addCategoryForm = new FormGroup({
@@ -49,7 +50,7 @@ export class AddUsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryService
-      .getCategoryListAdmin()
+      .getUserListAdmin()
       .subscribe((categories) => (this.categories = categories));
   }
 
@@ -59,10 +60,14 @@ export class AddUsersComponent implements OnInit {
 
   // show all input
   addCategory() {
+    if (this.addCategoryForm.invalid) {
+      return;
+    }
+
     this.categoryService
-      .addCategory(this.addCategoryForm.value as CategoryAdmin)
+      .addUser(this.addCategoryForm.value as UserAdmin)
       .subscribe((product) => {
-        alert('Add category successfully!');
+        alert('Add User successfully!');
         this.handleAddCategory.emit();
       });
   }

@@ -4,13 +4,20 @@ import { ProductAdmin } from '../../../../types/Product';
 import { ProductService } from '../../../../services/product.service'; // import services
 import { CategoryService } from '../../../../services/category.service';
 import { AddCategoryComponent } from '../add-category/add-category.component';
+import { EditCategoriesComponent } from '../edit-categories/edit-categories.component';
 import { PaginationComponent } from '../../../../components/admin/pagination/pagination.component';
 // import { EditProductsComponent } from '../edit-products/edit-products.component';
 
 @Component({
   selector: 'categories',
   standalone: true,
-  imports: [NgFor, NgIf, AddCategoryComponent, PaginationComponent],
+  imports: [
+    NgFor,
+    NgIf,
+    AddCategoryComponent,
+    PaginationComponent,
+    EditCategoriesComponent,
+  ],
   templateUrl: './all-categories.component.html',
 })
 export class CategoriesComponent implements OnInit {
@@ -119,5 +126,15 @@ export class CategoriesComponent implements OnInit {
       this.getAllCategoriesPagination();
     });
     this.toggleModal();
+  }
+
+  handleEditCategory() {
+    this.categoryService.getCategoryListAdmin().subscribe((categories) => {
+      this.totalCategories = categories;
+      this.categories = categories;
+      this.totalPage = Math.ceil(this.categories.length / this.limit);
+      this.getAllCategoriesPagination();
+    });
+    this.toggleModalEdit();
   }
 }

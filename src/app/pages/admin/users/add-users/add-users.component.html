@@ -59,7 +59,7 @@
             <label
               for="name"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Name</label
+              >Email</label
             >
             <input
               type="text"
@@ -68,26 +68,61 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="Type category name"
               required=""
-              formControlName="title"
+              formControlName="email"
             />
 
             <div
               *ngIf="
-                addCategoryForm.get('title')?.hasError('required') &&
-                addCategoryForm.get('title')?.touched
+                addCategoryForm.get('email')?.hasError('email') &&
+                addCategoryForm.get('email')?.touched
               "
               class="text-red-500 text-sm mt-1"
             >
-              Category name is required
+              Email is required
             </div>
             <div
               *ngIf="
-                addCategoryForm.get('title')?.hasError('minlength') &&
-                addCategoryForm.get('title')?.touched
+                addCategoryForm.get('email')?.hasError('minlength') &&
+                addCategoryForm.get('email')?.touched
               "
               class="text-red-500 text-sm mt-1"
             >
-              Category name must be at least 3 characters
+              Email must be at least 3 characters
+            </div>
+          </div>
+          <div class="col-span-2">
+            <label
+              for="name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Password</label
+            >
+            <input
+              type="text"
+              name="name"
+              id="name"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="Type category name"
+              required=""
+              formControlName="password"
+            />
+
+            <div
+              *ngIf="
+                addCategoryForm.get('password')?.hasError('required') &&
+                addCategoryForm.get('password')?.touched
+              "
+              class="text-red-500 text-sm mt-1"
+            >
+              password name is required
+            </div>
+            <div
+              *ngIf="
+                addCategoryForm.get('password')?.hasError('minlength') &&
+                addCategoryForm.get('password')?.touched
+              "
+              class="text-red-500 text-sm mt-1"
+            >
+              Password name must be at least 3 characters
             </div>
           </div>
         </div>
@@ -107,7 +142,7 @@
               clip-rule="evenodd"
             ></path>
           </svg>
-          Add new category
+          Add new user
         </button>
       </form>
     </div>
