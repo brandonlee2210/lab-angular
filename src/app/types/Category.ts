@@ -4,6 +4,6 @@ export type Category = {
 };
 
 export type CategoryAdmin = {
-  id: string;
-  title: string;
+  id: number | null;
+  title: string | null;
 };

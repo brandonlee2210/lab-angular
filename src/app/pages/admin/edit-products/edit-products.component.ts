@@ -40,7 +40,7 @@ export class EditProductsComponent implements OnInit {
 
     title: new FormControl(''),
 
-    price: new FormControl(0),
+    price: new FormControl(''),
 
     img: new FormControl('', [Validators.required]),
 

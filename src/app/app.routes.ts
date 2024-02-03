@@ -3,10 +3,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProductsComponent } from './pages/admin/products/products.component';
 import { EditProductsComponent } from './pages/admin/edit-products/edit-products.component';
 import { AddProductComponent } from './pages/admin/add-product/add-product.component';
+import { AddCategoryComponent } from './pages/admin/categories/add-category/add-category.component';
+import { CategoriesComponent } from './pages/admin/categories/all-categories/all-categories.component';
 import { AdminComponent } from './layouts/admin/admin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { canActivateTeam } from './auth-guard.guard';
+import { AddUsersComponent } from './pages/admin/users/add-users/add-users.component';
 
 const canActivate = () => {
   const token = sessionStorage.getItem('user');
@@ -36,6 +39,15 @@ export const routes: Routes = [
         data: { isEdit: true },
       },
       { path: 'products/add', component: AddProductComponent },
+      { path: 'categories', component: CategoriesComponent },
+      {
+        path: 'categories/edit/:id',
+        component: EditProductsComponent,
+        data: { isEdit: true },
+      },
+      { path: 'categories/add', component: AddCategoryComponent },
+      { path: 'users/add', component: AddUsersComponent },
+      { path: 'users', component: CategoriesComponent },
     ], // data: {isEdit: true} => truyen tham so
   },
 ];

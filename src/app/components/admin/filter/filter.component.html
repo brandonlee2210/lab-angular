@@ -1,0 +1,21 @@
+<div class="mt-6 mb-6 lg:mt-0 lg:px-2 lg:w-4/5">
+  <div
+    class="flex items-center justify-between text-sm tracking-widest uppercase"
+  >
+    <form action="index.php" type="post" class="flex items-center gap-[10px]">
+      <input type="hidden" name="category_id" value=">" />
+      <p class="text-gray-500">Filtered by category</p>
+      <select
+        class="font-medium text-gray-700 p-2 rounded-md border border-blue-500 focus:outline-none"
+        id="filter-select"
+        name="filter"
+        (change)="filterByCategory($event.target)"
+      >
+        <option>Select a category</option>
+        <option *ngFor="let category of categories" value="{{ category.id }}">
+          {{ category.title }}
+        </option>
+      </select>
+    </form>
+  </div>
+</div>

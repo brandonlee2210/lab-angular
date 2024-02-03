@@ -14,11 +14,11 @@ export type Product = {
 };
 
 export type ProductAdmin = {
-  id: number;
+  id: number | null;
   category: string | null;
   title: string | null;
   description: string | null;
-  price: number | null;
+  price: string | null;
   img: string | null;
 };
 

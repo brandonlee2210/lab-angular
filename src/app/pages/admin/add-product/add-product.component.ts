@@ -23,7 +23,6 @@ import { ProductAdmin } from '../../../types/Product';
   standalone: true,
   imports: [CommonModule, NgIf, ReactiveFormsModule],
   templateUrl: './add-product.component.html',
-  styleUrl: './add-product.component.css',
 })
 export class AddProductComponent implements OnInit {
   @Output() handleCloseForm = new EventEmitter<any>();
