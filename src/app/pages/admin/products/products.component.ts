@@ -114,7 +114,6 @@ export class ProductsComponent implements OnInit {
   }
 
   handlePages(i: number) {
-    debugger;
     this.offset = (i - 1) * this.limit;
     this.currentPage = i;
 
@@ -122,7 +121,6 @@ export class ProductsComponent implements OnInit {
   }
 
   getALlProductsPagination() {
-    debugger;
     if (this.currentCategoryFilterName || this.currentSearchName) {
       this.productList = this.totalProducts.filter(
         (product) =>
